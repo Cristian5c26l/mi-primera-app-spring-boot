@@ -21,7 +21,7 @@ public class BookServiceImpl implements BookService {
         if(id > 0) {// Logica de negocio
             return this.repo.getBookById(id);//Comunicarme con la capa de repositorio
         } else {
-            return new Book(0, "NO TITLE");
+            return new Book(0, "NO TITLE", true);
         }
     }
 }

@@ -42,6 +42,19 @@
 			<version>2.19.1</version>
 		</dependency> -->
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa SE ELIGIO LA 3.5.3 PORQUE MAS ARRIBA DICE QUE ESTOY TRABAJANDO CON SPRING BOOT 3.5.3... implicitamente, esta dependencia estaria usando la version 3.5.3, porque se esta usando spring boot 3.5.3-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.7.7</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>

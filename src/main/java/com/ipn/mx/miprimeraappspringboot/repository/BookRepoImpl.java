@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 public class BookRepoImpl implements BookRepo {
     @Override
     public Book getBookById(int id) {
-        return new Book(1, "1998 - El Cálculo - Leithold");
+        return new Book(1, "1998 - El Cálculo - Leithold", true);
     }
 }
