@@ -3,9 +3,11 @@ package com.ipn.mx.miprimeraappspringboot.controller;
 import com.ipn.mx.miprimeraappspringboot.model.Book;
 import com.ipn.mx.miprimeraappspringboot.service.BookService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -21,8 +23,36 @@ public class BookController {
     }*/
 
     @GetMapping
-    public Book getBook() {
-        //return new Book(1, "1998 - El Cálculo - Leithold");
-        return this.bookService.validAndReturn(0);
+    public ResponseEntity<List<Book>> getAllBooks() {
+        List<Book> books = this.bookService.findAll();
+
+        return ResponseEntity.ok(books);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Book> getBookById(@PathVariable("id") Integer id) {
+        Book book = this.bookService.findById(id);
+        return ResponseEntity.ok(book);
+    }
+
+    @PostMapping
+    public ResponseEntity<Book> saveBook(@RequestBody Book book) {
+        Book createdBook = this.bookService.save(book);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Book> updateBookById(@PathVariable("id") Integer id, @RequestBody Book book) {
+        Book updatedBook = this.bookService.update(id, book);
+
+        return ResponseEntity.ok(updatedBook);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Book> deleteBookById(@PathVariable("id") Integer id) {
+        this.bookService.delete(id);
+
+        return ResponseEntity.noContent().build();// Responder a la petición sin nada de contenido. Con build se indica que ya se terminó la petición
     }
 }
