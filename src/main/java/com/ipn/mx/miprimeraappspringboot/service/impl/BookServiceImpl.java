@@ -1,6 +1,7 @@
 package com.ipn.mx.miprimeraappspringboot.service.impl;
 
 import com.ipn.mx.miprimeraappspringboot.model.Book;
+import com.ipn.mx.miprimeraappspringboot.model.Category;
 import com.ipn.mx.miprimeraappspringboot.repository.BookRepo;
 import com.ipn.mx.miprimeraappspringboot.service.BookService;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +33,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book findById(Integer id) {
-        return this.repo.findById(id).orElse(new Book(-1, "NONE", false));
+        return this.repo.findById(id).orElse(new Book(-1, "NONE", new Category(-1, "NONE") ,false));
     }
 
     @Override
